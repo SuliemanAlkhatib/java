@@ -92,7 +92,7 @@ public static void searchContract(ArrayList<Contract> contracts){
     }
 }
 public static void DisplayAllContracts(ArrayList<Contract> contracts){
-       System.out.println("Enter 1 to display all contracts, 2 to display only active contracts, 3 to display only closed contracts: ");
+       System.out.println("\nEnter \n1 to display all contracts, \n2 to display only active contracts, \n3 to display only closed contracts ,\n4 to display late contracts, \n5 to display contracts within a specific interval: ");
        int choice = new Scanner(System.in).nextInt();
          switch(choice){
               case 1: for(Contract c : contracts){
@@ -128,13 +128,28 @@ public static void DisplayAllContracts(ArrayList<Contract> contracts){
                long daysBetween = ChronoUnit.DAYS.between(startDate, EndDate);
                int i=0;
                for(Contract c : contracts){
-                i++;
+                
                    if(ChronoUnit.DAYS.between(c.startDate, startDate) <= daysBetween ){
+                    i++;
                     System.out.println("Vehicle "+i+":");
                        c.Vehicle.displayInfo();
                    }
               }
               break;
+          }
+          case 6: {
+            Scanner sc = new Scanner(System.in);
+             System.out.println("Enter the Vehicle Plate Number: ");
+              int plateNumber = sc.nextInt();
+              int i=0;
+                for(Contract c : contracts){
+                     if(c.Vehicle.plateNumber == plateNumber){
+                        i++;
+                        System.out.println("Client "+i+":");
+                        c.client.displayInfo();
+                     }
+                }
+           
           }
 }
 
