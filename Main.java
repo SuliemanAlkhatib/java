@@ -103,7 +103,7 @@ public class Main {
         ArrayList<Client> clients = new ArrayList<>();
         ArrayList<Contract> contracts = new ArrayList<>();
         ArrayList<Vehicle> vehicles = new ArrayList<>();
-        clients.add(new Person("suliman","39034","3gfd","2343532",LocalDate.of(2008,4,13)));  
+        clients.add(new Person("Sulieman","39034","3gfd","2343532",LocalDate.of(2008,4,13)));  
         vehicles.add(new Car(1234,"Toyota","Corolla",100,"Gasoline",5));
      
     do{
