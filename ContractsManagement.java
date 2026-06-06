@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class ContractsManagement {
@@ -116,15 +117,26 @@ public static void DisplayAllContracts(ArrayList<Contract> contracts){
                       c.Vehicle.displayInfo();
                   }
               }
-              case 4: for(Contract c : contracts){
-                c.lateness();
-                
-                  if(c.lateDays>0){
-                      c.Vehicle.displayInfo();
-                  }
+              case 5: {
+                Scanner sc = new Scanner(System.in);
+                 System.out.println("Enter Start Interval Date (YYYY-MM-DD): ");
+               String startDateStr = sc.next();
+               LocalDate startDate = LocalDate.parse(startDateStr);
+               System.out.println("Enter End Interval Date (YYYY-MM-DD): ");
+               String EndDateStr = sc.next();
+               LocalDate EndDate = LocalDate.parse(EndDateStr);
+               long daysBetween = ChronoUnit.DAYS.between(startDate, EndDate);
+               int i=0;
+               for(Contract c : contracts){
+                i++;
+                   if(ChronoUnit.DAYS.between(c.startDate, startDate) <= daysBetween ){
+                    System.out.println("Vehicle "+i+":");
+                       c.Vehicle.displayInfo();
+                   }
               }
               break;
           }
 }
 
+}
 }
