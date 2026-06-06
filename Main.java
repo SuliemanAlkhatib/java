@@ -46,7 +46,7 @@ public class Main {
             case 1:
                 VehiclesManagement.AddVehicle(vehicles);
                 break;
-            case 2:
+            case 2:22211212
                 System.out.println("Enter Vehicle Plate Number: ");
                 int searchId = sc.nextInt();
                 VehiclesManagement.SearchVehicle(vehicles, searchId);
