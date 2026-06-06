@@ -1,4 +1,5 @@
 abstract public class Vehicle {
+    public int rentCount =0;
     protected int plateNumber;
     protected String company;
     protected double rate;

@@ -39,13 +39,13 @@ public class ContractsManagement {
         LocalDate startDate = LocalDate.parse(startDateStr);
         System.out.println("Enter Duration In Days: ");
         int durationInDays = sc.nextInt();
-        
+        vehicle.rentCount++;
+        client.rentCount++;
         Contract contract = new Contract(client, vehicle, startDate, durationInDays);
         contracts.add(contract);
         vehicle.isAvailable = false;
     }
     public static void closeContract(int platenumber, ArrayList<Contract> contracts)
-    
     {
     for(Contract c : contracts){
         if(c.Vehicle.plateNumber == (platenumber) && !c.isClosed){

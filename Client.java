@@ -1,5 +1,6 @@
 abstract public class Client  {
     protected String name;
+    protected int rentCount=0;
     protected String phoneNumber;
     static int counter=0;
     protected final int id;

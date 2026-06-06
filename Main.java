@@ -37,7 +37,7 @@ public class Main {
         int choice;
         Scanner sc = new Scanner(System.in);
         do{
-        System.out.println("Enter 1 to add vehicle, \n2 to search vehicle,\n 3 to show vehicle,\n 4 to remove vehicle,\n0 to go back: ");
+        System.out.println("\nEnter 1 to add vehicle, \n2 to search vehicle,\n 3 to show vehicle,\n 4 to remove vehicle,\n 5 to Display Available Vehicles,\n0 to go back: ");
          choice= sc.nextInt();
         if(choice == 0){
             break;
@@ -46,7 +46,7 @@ public class Main {
             case 1:
                 VehiclesManagement.AddVehicle(vehicles);
                 break;
-            case 2:22211212
+            case 2:
                 System.out.println("Enter Vehicle Plate Number: ");
                 int searchId = sc.nextInt();
                 VehiclesManagement.SearchVehicle(vehicles, searchId);
@@ -59,6 +59,8 @@ public class Main {
                 int plateNumber = sc.nextInt();
                 VehiclesManagement.RemoveVehicle(vehicles, plateNumber);
                 break;
+            case 5:
+                VehiclesManagement.DisplayAvailableVehicles(vehicles);
             default:
                 System.out.println("Invalid Choice");
         }
@@ -68,7 +70,7 @@ public class Main {
         int choice=0;
         Scanner sc = new Scanner(System.in);
         do{
-        System.out.println("Enter 1 to add client, \n2 to search client,\n 3 to show client ,\n 4 to update client,\n0 to go back: ");
+        System.out.println("\nEnter 1 to add client, \n2 to search client,\n 3 to show client ,\n 4 to update client,\n0 to go back: ");
          choice= sc.nextInt();
         if(choice == 0){
             break;
@@ -107,9 +109,9 @@ public class Main {
         vehicles.add(new Car(1234,"Toyota","Corolla",100,"Gasoline",5));
      
     do{
-        System.out.println("Enter 1 to manage clients, \n2 to manage vehicles,\n 3 to manage Contract ,\n 4 to remove vehicle,\n 5 to search client,\n 6 to search vehicle, \n7 to display all clients, \n8 to display all vehicles, \n9 to display all Contracts: ,\n10 to close contract,\n11 to quit: ");
+        System.out.println("\nEnter \n1 to manage clients\n2 to manage vehicles\n3 to manage Contract\n0 to quit: ");
          choice= sc.nextInt();
-        if(choice == 11){
+        if(choice == 0){
             break;
         }
         switch(choice){
@@ -120,35 +122,8 @@ public class Main {
                 vehicles(vehicles);
                 break;
             case 3:
-                ContractsManagement.addContract(contracts, clients, vehicles);
+                contracts(contracts,clients,vehicles);
                 break;
-            case 4:
-                System.out.println("Enter Vehicle Plate Number: ");
-                int plateNumber = sc.nextInt();
-                VehiclesManagement.RemoveVehicle(vehicles, plateNumber);
-                break;
-            case 5:
-               
-                break;
-            case 6:
-                System.out.println("Enter Vehicle Plate Number: ");
-                int searchPlateNumber = sc.nextInt();
-                VehiclesManagement.SearchVehicle(vehicles, searchPlateNumber);
-                break;
-            case 7:
-                ClientManagement.ShowClients(clients);
-                break;
-            case 8:
-                VehiclesManagement.DisplayAllVehicles(vehicles);
-                break;
-                 case 9:
-                ContractsManagement.DisplayAllContracts(contracts);
-                break;
-                case 10:
-                    System.out.println("Enter Vehicle Plate Number: ");
-                   int ContractPlateNumber = sc.nextInt();
-                    ContractsManagement.closeContract(ContractPlateNumber, contracts);
-                    break;
             default:
                 System.out.println("Invalid Choice");
         }
