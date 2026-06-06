@@ -83,5 +83,12 @@ public class VehiclesManagement {
                   }
               }
           }
+          public static void DisplayUnAvailableVehicles(ArrayList<Vehicle> vehicles){
+              for(Vehicle v : vehicles){
+                  if(!v.isAvailable){
+                      v.displayInfo();
+                  }
+              }
+          }
 
 }

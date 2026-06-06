@@ -19,6 +19,11 @@ public class Contract {
             System.out.println("Vehicle Plate Number: "+Vehicle.plateNumber);
             System.out.println("Start Date: "+startDate.getDayOfMonth()+"/"+startDate.getMonthValue()+"/"+startDate.getYear());
             System.out.println("Duration in Days: "+durationInDays);
+            if(ChronoUnit.DAYS.between(startDate, LocalDate.now())>durationInDays){
+                System.out.println("The contract is late by "+lateDays+" days.");
+            }else{
+                System.out.println("There are "+(durationInDays - ChronoUnit.DAYS.between(startDate, LocalDate.now()))+" days left until the contract is due.");
+            }
             System.out.println("Is Closed: "+(isClosed? "yes":"No"));
         }
         public void lateness(){

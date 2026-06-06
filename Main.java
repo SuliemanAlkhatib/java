@@ -37,7 +37,7 @@ public class Main {
         int choice;
         Scanner sc = new Scanner(System.in);
         do{
-        System.out.println("\nEnter 1 to add vehicle, \n2 to search vehicle,\n 3 to show vehicle,\n 4 to remove vehicle,\n 5 to Display Available Vehicles,\n0 to go back: ");
+        System.out.println("\nEnter\n 1 to add vehicle, \n 2 to search vehicle,\n 3 to show vehicle,\n 4 to remove vehicle,\n 5 to Display Available Vehicles,\n 6 to Display Unavailable Vehicles,\n 0 to go back: ");
          choice= sc.nextInt();
         if(choice == 0){
             break;
@@ -61,6 +61,10 @@ public class Main {
                 break;
             case 5:
                 VehiclesManagement.DisplayAvailableVehicles(vehicles);
+                break;
+            case 6:
+                VehiclesManagement.DisplayUnAvailableVehicles(vehicles);
+                break;
             default:
                 System.out.println("Invalid Choice");
         }
@@ -70,7 +74,7 @@ public class Main {
         int choice=0;
         Scanner sc = new Scanner(System.in);
         do{
-        System.out.println("\nEnter 1 to add client, \n2 to search client,\n 3 to show client ,\n 4 to update client,\n0 to go back: ");
+        System.out.println("\nEnter\n 1 to add client, \n 2 to search client,\n 3 to show client ,\n 4 to update client,\n 0 to go back: ");
          choice= sc.nextInt();
         if(choice == 0){
             break;

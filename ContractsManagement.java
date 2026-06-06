@@ -59,10 +59,65 @@ public class ContractsManagement {
     }
 
 }
- public static void DisplayAllContracts(ArrayList<Contract> contracts){
-              for(Contract c : contracts){
+public static void searchContract(ArrayList<Contract> contracts){
+    Scanner sc = new Scanner(System.in);
+    System.out.println("To search by Person name enter 1, to search by Corporate client name Enter 2: ");
+    int choice = sc.nextInt();
+    switch(choice){
+        case 1:
+            System.out.println("Enter Client name: ");
+            String clientName = sc.next();
+            for(Contract c : contracts){
+                if(c.client.name.equals(clientName)){
+                    c.displayInfo();
+                    return;
+                }
+            }
+            System.out.println("Contract not found!");
+            break;
+        case 2:
+            System.out.println("Enter Corporate client name: ");
+            String corporateName = sc.next();
+            for(Contract c : contracts){
+                if(c.client instanceof Corporate && ((Corporate) c.client).name.equals(corporateName)){
+                    c.displayInfo();
+                    return;
+                }
+            }
+            System.out.println("Contract not found!");
+            break;
+       
+          
+    }
+}
+public static void DisplayAllContracts(ArrayList<Contract> contracts){
+       System.out.println("Enter 1 to display all contracts, 2 to display only active contracts, 3 to display only closed contracts: ");
+       int choice = new Scanner(System.in).nextInt();
+         switch(choice){
+              case 1: for(Contract c : contracts){
                   c.displayInfo();
               }
+              break;
+              case 2: for(Contract c : contracts){
+                  if(!c.isClosed){
+                      c.displayInfo();
+                  }
+              }
+              break;
+              case 3: for(Contract c : contracts){
+                  if(c.isClosed){
+                      c.displayInfo();
+                  }
+              }
+              case 4: for(Contract c : contracts){
+                c.lateness();
+                
+                  if(c.lateDays>0){
+                      c.Vehicle.displayInfo();
+                  }
+              }
+              break;
           }
 }
 
+}
