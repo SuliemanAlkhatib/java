@@ -116,6 +116,13 @@ public static void DisplayAllContracts(ArrayList<Contract> contracts){
                       c.Vehicle.displayInfo();
                   }
               }
+              case 4: for(Contract c : contracts){
+                c.lateness();
+                
+                  if(c.lateDays>0){
+                      c.Vehicle.displayInfo();
+                  }
+              }
               break;
           }
 }
