@@ -35,14 +35,14 @@ public class ContractsManagement {
             System.out.println("Vehicle is not available!");
             return;
         }
-        System.out.println("Enter Start Date (YYYY-MM-DD): ");
+        /*System.out.println("Enter Start Date (YYYY-MM-DD): ");
         String startDateStr = sc.next();
-        LocalDate startDate = LocalDate.parse(startDateStr);
+        LocalDate startDate = LocalDate.parse(startDateStr);*/
         System.out.println("Enter Duration In Days: ");
         int durationInDays = sc.nextInt();
         vehicle.rentCount++;
         client.rentCount++;
-        Contract contract = new Contract(client, vehicle, startDate, durationInDays);
+        Contract contract = new Contract(client, vehicle, LocalDate.now(), durationInDays);
         contracts.add(contract);
         vehicle.isAvailable = false;
     }
