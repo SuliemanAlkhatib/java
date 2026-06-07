@@ -13,7 +13,6 @@ public class VehiclesManagement {
           String model = sc.next();
           System.out.println("Enter Daily Cost: ");
           double dayleyCost = sc.nextDouble();
-          boolean isAvailable = true;
         switch (type) {
             case 1:
                 System.out.println("Enter Engine Capacity: ");
