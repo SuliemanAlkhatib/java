@@ -121,24 +121,40 @@ public static void DisplayAllContracts(ArrayList<Contract> contracts){
                   c.displayInfo();
               }
               break;
-              case 2: for(Contract c : contracts){
+              case 2: int i=0;
+              for(Contract c : contracts){
+
                   if(!c.isClosed){
+                        i++;
                       c.displayInfo();
                   }
               }
+              if(i==0){
+                  System.out.println("No active contracts found!");
+              }
               break;
-              case 3: for(Contract c : contracts){
+              case 3:  i=0;
+              for(Contract c : contracts){
                   if(c.isClosed){
+                      i++;
                       c.displayInfo();
                   }
               }
+              if(i==0){
+                  System.out.println("No closed contracts found!");
+              }
               break;
-              case 4: for(Contract c : contracts){
+              case 4: i=0;
+              for(Contract c : contracts){
                 c.lateness();
                 
                   if(c.lateDays>0){
+                      i++;
                       c.Vehicle.displayInfo();
                   }
+              }
+              if(i==0){
+                  System.out.println("No late contracts found!");
               }
               break;
               case 5: {
@@ -153,7 +169,7 @@ public static void DisplayAllContracts(ArrayList<Contract> contracts){
                String EndDateStr = sc.next();
                LocalDate EndDate = LocalDate.parse(EndDateStr);
                long daysBetween = ChronoUnit.DAYS.between(startDate, EndDate);
-               int i=0;
+                i=0;
                for(Contract c : contracts){
                 
                    if(ChronoUnit.DAYS.between(c.startDate, startDate) <= daysBetween ){
@@ -168,20 +184,27 @@ public static void DisplayAllContracts(ArrayList<Contract> contracts){
                     }
                     
                    }
-              }sc.close();
+              }
+              if(i==0){
+                  System.out.println("No contracts found within the specified interval!");
+              }
+              sc.close();
               
           }break;
           case 6: {
             Scanner sc = new Scanner(System.in);
              System.out.println("Enter the Vehicle Plate Number: ");
               int plateNumber = sc.nextInt();
-              int i=0;
+               i=0;
                 for(Contract c : contracts){
                      if(c.Vehicle.plateNumber == plateNumber){
                         i++;
                         System.out.println("Client "+i+":");
                         c.client.displayInfo();
                      }
+                }
+                if(i==0){
+                    System.out.println("No contracts found for the specified vehicle!");
                 }
            
           sc.close();}
