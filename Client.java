@@ -15,6 +15,7 @@ abstract public class Client  {
     }
 
     public void displayInfo(){
+        System.out.println("=======================================================");  
         System.out.println("ID: "+id);
         System.out.println("Rent Count: "+rentCount);
         System.out.println("Name: "+name);

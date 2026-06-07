@@ -62,7 +62,7 @@ public class ContractsManagement {
 }
 public static void searchContract(ArrayList<Contract> contracts){
     Scanner sc = new Scanner(System.in);
-    System.out.println("To search by Person name enter 1, to search by Corporate client name Enter 2: ");
+    System.out.println("To search by Person name enter 1\nto search by Corporate client name Enter 2: ");
     int choice = sc.nextInt();
     switch(choice){
         case 1:
@@ -87,14 +87,19 @@ public static void searchContract(ArrayList<Contract> contracts){
             }
             System.out.println("Contract not found!");
             break;
-       
+       default: System.out.println("Invalid Choice");
           
     }
 }
 public static void DisplayAllContracts(ArrayList<Contract> contracts){
-       System.out.println("\nEnter \n1 to display all contracts, \n2 to display only active contracts, \n3 to display only closed contracts ,\n4 to display late contracts, \n5 to display contracts within a specific interval: ");
-       int choice = new Scanner(System.in).nextInt();
+    int choice;
+       while(true){
+        
+       System.out.println("\nEnter \n1 to display all contracts, \n2 to display only active contracts, \n3 to display only closed contracts ,\n4 to display late contracts, \n5 to display contracts within a specific interval\n0 to exit: ");
+      choice  = new Scanner(System.in).nextInt();
+      if(choice==0)break;
          switch(choice){
+            
               case 1: for(Contract c : contracts){
                   c.displayInfo();
               }
@@ -110,6 +115,7 @@ public static void DisplayAllContracts(ArrayList<Contract> contracts){
                       c.displayInfo();
                   }
               }
+              break;
               case 4: for(Contract c : contracts){
                 c.lateness();
                 
@@ -117,8 +123,12 @@ public static void DisplayAllContracts(ArrayList<Contract> contracts){
                       c.Vehicle.displayInfo();
                   }
               }
+              break;
               case 5: {
                 Scanner sc = new Scanner(System.in);
+                int choice2;
+                 System.out.println("1 to search all vehicles 2 to search only bikes");
+                    choice2 = sc.nextInt();
                  System.out.println("Enter Start Interval Date (YYYY-MM-DD): ");
                String startDateStr = sc.next();
                LocalDate startDate = LocalDate.parse(startDateStr);
@@ -130,13 +140,20 @@ public static void DisplayAllContracts(ArrayList<Contract> contracts){
                for(Contract c : contracts){
                 
                    if(ChronoUnit.DAYS.between(c.startDate, startDate) <= daysBetween ){
-                    i++;
+                    if(choice2 == 2 && c.Vehicle instanceof Bike){
+                        i++;
                     System.out.println("Vehicle "+i+":");
                        c.Vehicle.displayInfo();
+                    }else if(choice2==1){
+                        i++;
+                    System.out.println("Vehicle "+i+":");
+                       c.Vehicle.displayInfo();
+                    }
+                    
                    }
               }
-              break;
-          }
+              
+          }break;
           case 6: {
             Scanner sc = new Scanner(System.in);
              System.out.println("Enter the Vehicle Plate Number: ");
@@ -151,7 +168,9 @@ public static void DisplayAllContracts(ArrayList<Contract> contracts){
                 }
            
           }
-}
+            break;
+                default: System.out.println("Invalid Choice");
+}}
 
 }
 }

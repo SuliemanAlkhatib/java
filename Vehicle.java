@@ -15,6 +15,7 @@ abstract public class Vehicle {
     }
 
      public void displayInfo(){
+        System.out.println("=======================================================");  
         System.out.println("company name: "+company +"\nrate: "+rate+"\n car model "+ model +"\n plate number "+plateNumber+"\n dayley Cost "+dayleyCost+"\n isAvailable "+((isAvailable)?"Yes":"NO"));
      }
 }

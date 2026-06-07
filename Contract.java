@@ -15,6 +15,7 @@ public class Contract {
             this.durationInDays = durationInDays;
         }
         public void displayInfo(){
+            System.out.println("=======================================================");  
             System.out.println("Client Name: "+client.name);
             System.out.println("Vehicle Plate Number: "+Vehicle.plateNumber);
             System.out.println("Start Date: "+startDate.getDayOfMonth()+"/"+startDate.getMonthValue()+"/"+startDate.getYear());
@@ -25,6 +26,10 @@ public class Contract {
                 System.out.println("There are "+(durationInDays - ChronoUnit.DAYS.between(startDate, LocalDate.now()))+" days left until the contract is due.");
             }
             System.out.println("Is Closed: "+(isClosed? "yes":"No"));
+            if(isClosed){
+                System.out.println("Fine: "+fine);
+            }
+            System.out.println("=======================================================");  
         }
         public void lateness(){
              long daysBetween = ChronoUnit.DAYS.between(startDate, LocalDate.now());
@@ -33,6 +38,7 @@ public class Contract {
 
         }
         public double calculateFine(){
+            fine=0;
             if(client instanceof Person p){
                 p.isVip();
             }

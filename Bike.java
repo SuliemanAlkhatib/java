@@ -13,6 +13,7 @@ public class Bike extends Vehicle {
     public void displayInfo() {
         super.displayInfo();
         System.out.println("Engine Capacity: " + engineCapacity + "\nHas Side Seat: " + ((hasSideSeat) ? "Yes" : "No"));
+        System.out.println("=======================================================");  
     
     }
 }

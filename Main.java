@@ -2,11 +2,34 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
+    public static void reports(ArrayList<Contract> contracts, ArrayList<Vehicle> vehicles, ArrayList<Client> clients){
+        int choice;
+        Scanner sc = new Scanner(System.in);
+        do{
+        System.out.println("\nEnter\n1 to show revenue report, \n2 to show most rented vehicles,\n3 to show VIP clients,\n0 to go back: ");
+         choice= sc.nextInt();
+        if(choice == 0){
+            break;
+        }
+        switch(choice){
+            case 1:
+                ReportsManagement.revenueReport(contracts);
+                break;
+            case 2:
+                ReportsManagement.mostRentedVehicles(vehicles);
+                break;
+            case 3:
+                ReportsManagement.VipClients(clients);
+                break;
+            default:
+                System.out.println("Invalid Choice");
+        }}while(true);
+    }
     public static void contracts(ArrayList<Contract> contracts, ArrayList<Client> clients, ArrayList<Vehicle> vehicles){
         int choice=0;
         Scanner sc = new Scanner(System.in);
         do{
-        System.out.println("Enter\n 1 to Open Contract, \n 2 to search Contract,\n 3 to Show All Contracts,\n 4 to Close Contract,\n 0 to go back: ");
+        System.out.println("Enter\n1 to Open Contract, \n2 to search Contract,\n3 to Filter Contracts,\n4 to Close Contract,\n0 to go back: ");
          choice= sc.nextInt();
         if(choice == 0){
             break;
@@ -37,7 +60,7 @@ public class Main {
         int choice;
         Scanner sc = new Scanner(System.in);
         do{
-        System.out.println("\nEnter\n 1 to add vehicle, \n 2 to search vehicle,\n 3 to show vehicle,\n 4 to remove vehicle,\n 5 to Display Available Vehicles,\n 6 to Display Unavailable Vehicles,\n 0 to go back: ");
+        System.out.println("\nEnter\n1 to add vehicle, \n2 to search vehicle,\n3 to show vehicle,\n4 to remove vehicle,\n5 to Display Available Vehicles,\n6 to Display Unavailable Vehicles,\n0 to go back: ");
          choice= sc.nextInt();
         if(choice == 0){
             break;
@@ -71,10 +94,10 @@ public class Main {
     }while(true);
     }
     public static void clients(ArrayList<Client> clients){
-        int choice=0;
+        int choice;
         Scanner sc = new Scanner(System.in);
         do{
-        System.out.println("\nEnter\n 1 to add client, \n 2 to search client,\n 3 to show client ,\n 4 to update client,\n 0 to go back: ");
+        System.out.println("\nEnter\n1 to add client, \n2 to search client,\n3 to show client ,\n4 to update client,\n0 to go back: ");
          choice= sc.nextInt();
         if(choice == 0){
             break;
@@ -113,7 +136,7 @@ public class Main {
         vehicles.add(new Car(1234,"Toyota","Corolla",100,"Gasoline",5));
      
     do{
-        System.out.println("\nEnter \n1 to manage clients\n2 to manage vehicles\n3 to manage Contract\n0 to quit: ");
+        System.out.println("\nEnter \n1 to manage clients\n2 to manage vehicles\n3 to manage Contract\n4 to generate reports\n0 to quit: ");
          choice= sc.nextInt();
         if(choice == 0){
             break;
@@ -127,6 +150,9 @@ public class Main {
                 break;
             case 3:
                 contracts(contracts,clients,vehicles);
+                break;
+            case 4:
+                reports(contracts, vehicles, clients);
                 break;
             default:
                 System.out.println("Invalid Choice");

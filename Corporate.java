@@ -12,5 +12,6 @@ public class Corporate extends Client {
         super.displayInfo();
         System.out.println("Tax Number: "+taxNumber);
         System.out.println("Rate: "+rate);
+        System.out.println("=======================================================");  
     }
 }

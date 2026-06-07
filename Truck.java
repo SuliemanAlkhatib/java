@@ -14,6 +14,7 @@ public class Truck extends Vehicle {
     public void displayInfo() {
         super.displayInfo();
         System.out.println("Load Capacity: " + loadCapacity + "\nHas Cooling System: " + ((hasCoolingSystem) ? "Yes" : "No"));
+        System.out.println("=======================================================");  
     }
     
 }

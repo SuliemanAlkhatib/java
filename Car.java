@@ -13,6 +13,7 @@ public class Car extends Vehicle {
     public void displayInfo() {
         super.displayInfo();
         System.out.println("Gas Type: " + gasType + "\nNumber Of Seats: " + numberOfSeats );
+        System.out.println("=======================================================");  
     }
 
 }
