@@ -75,7 +75,7 @@ public class ClientManagement {
                     ((Corporate) c).taxNumber = taxNumber;
                     ((Corporate) c).rate = rate;
                 }
-                sc.close();
+
                 System.out.println("Client updated successfully!");
                 return;
             }

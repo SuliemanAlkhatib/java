@@ -7,7 +7,7 @@ class ReportsManagement {
         System.out.println("Enter\n1 to show total revenue. \n2 to show revenue by vehicle. \n3 to show revenue by client. \n4 to show revenue by month. \n5 to show revenue by date range. \n0 to go back");
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
-        sc.close();
+
         switch(choice){
             case 1:{
         double totalRevenue = 0.0;
