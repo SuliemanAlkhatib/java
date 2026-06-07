@@ -39,9 +39,7 @@ public class Main {
                 ContractsManagement.addContract(contracts, clients, vehicles);
                 break;
             case 2:
-                System.out.println("Enter Vehicle Plate Number: ");
-                int searchId = sc.nextInt();
-                VehiclesManagement.SearchVehicle(vehicles, searchId);
+                ContractsManagement.searchContract(contracts);
                 break;
             case 3:
                 ContractsManagement.DisplayAllContracts(contracts);
