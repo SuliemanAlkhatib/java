@@ -8,6 +8,9 @@ public class Car extends Vehicle {
         if("Electric".equals(gasType)){
             this.rate = 0.05;
         }
+        if(numberOfSeats>5&&!"Electric".equals(gasType)){
+            this.rate = 0.1;
+        }
     }
     @Override
     public void displayInfo() {
