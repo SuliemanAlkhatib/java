@@ -23,7 +23,7 @@ public class Main {
                 break;
             default:
                 System.out.println("Invalid Choice");
-        }}while(true);
+        }}while(true);sc.close();
     }
     public static void contracts(ArrayList<Contract> contracts, ArrayList<Client> clients, ArrayList<Vehicle> vehicles){
         int choice=0;
@@ -55,6 +55,7 @@ public class Main {
                 System.out.println("Invalid Choice");
         }
     }while(true);
+    sc.close();
     }
     public static void vehicles(ArrayList<Vehicle> vehicles){
         int choice;
@@ -92,6 +93,7 @@ public class Main {
                 System.out.println("Invalid Choice");
         }
     }while(true);
+    sc.close();
     }
     public static void clients(ArrayList<Client> clients){
         int choice;
@@ -123,6 +125,7 @@ public class Main {
                 System.out.println("Invalid Choice");
         }
     }while(true);
+    sc.close();
     }
     public static void main(String[] args) {
         
@@ -158,6 +161,6 @@ public class Main {
                 System.out.println("Invalid Choice");
         }
     }while(true);
-    
+    sc.close();
     }
 }
