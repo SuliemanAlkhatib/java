@@ -134,7 +134,7 @@ public class Main {
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         clients.add(new Person("Sulieman","39034","3gfd","2343532",LocalDate.of(2008,4,13)));  
         vehicles.add(new Car(1234,"Toyota","Corolla",100,"Gasoline",5));
-     
+        clients.add(new Person("Maya","34243","fds","324324",LocalDate.of(2000,4,13))); 
     do{
         System.out.println("\nEnter \n1 to manage clients\n2 to manage vehicles\n3 to manage Contract\n4 to generate reports\n0 to quit: ");
          choice= sc.nextInt();
