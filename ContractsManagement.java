@@ -39,9 +39,9 @@ public class ContractsManagement {
 
             return;
         }
-        /*System.out.println("Enter Start Date (YYYY-MM-DD): ");
+        System.out.println("Enter Start Date (YYYY-MM-DD): ");
         String startDateStr = sc.next();
-        LocalDate startDate = LocalDate.parse(startDateStr);*/
+        LocalDate startDate = LocalDate.parse(startDateStr);
         System.out.println("Enter Duration In Days: ");
         int durationInDays = sc.nextInt();
         vehicle.rentCount++;
