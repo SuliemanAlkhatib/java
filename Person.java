@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 public class Person  extends Client {
     
     protected String drivingLicenseNumber;
@@ -7,6 +8,9 @@ public class Person  extends Client {
         super( name, phoneNumber, Address);
         this.drivingLicenseNumber = drivingLicenseNumber;
         this.dateOfBirth = dateOfBirth;
+        if((int)ChronoUnit.YEARS.between(dateOfBirth, LocalDate.now())<25){
+            this.rate = 0.15;
+        }
     }
     public void displayInfo(){
         super.displayInfo();
