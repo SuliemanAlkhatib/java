@@ -12,6 +12,10 @@ abstract public class Client  {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.Address = Address;
+        if(rentCount>=5){
+            vip=true;
+            rate=0.07;
+        }
     }
 
     public void displayInfo(){
