@@ -6,7 +6,7 @@ public class Contract {
     public LocalDate startDate;
     public int durationInDays;
     public int lateDays;
-    public double fine=0;
+    public double totalCost=0;
     public boolean isClosed=false;
         Contract(Client Client_name, Vehicle Vehicle, LocalDate startDate, int durationInDays) {
             this.client = Client_name;
@@ -27,7 +27,7 @@ public class Contract {
             }
             System.out.println("Is Closed: "+(isClosed? "yes":"No"));
             if(isClosed){
-                System.out.println("Fine: "+fine);
+                System.out.println("Total Cost: "+totalCost);
             }
             System.out.println("=======================================================");  
         }
@@ -38,16 +38,16 @@ public class Contract {
 
         }
         public double calculateFine(){
-            fine=0;
+            totalCost=0;
             if(client instanceof Person p){
                 p.isVip();
             }
          lateness();
-         fine+= durationInDays * Vehicle.dayleyCost;
-         fine+= fine * Vehicle.rate;
-         fine-= fine * client.rate;
-         fine+=0.1*lateDays*fine;
-         return fine;
+         totalCost+= durationInDays * Vehicle.dayleyCost;
+         totalCost+= totalCost * Vehicle.rate;
+         totalCost-= totalCost * client.rate;
+         totalCost+=0.1*lateDays*totalCost;
+         return totalCost;
         }
 
 

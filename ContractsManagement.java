@@ -97,7 +97,8 @@ public static void searchContract(ArrayList<Contract> contracts){
             }
             System.out.println("Contract not found!");
             break;
-       default: System.out.println("Invalid Choice");
+       default: 
+       System.out.println("Invalid Choice");
           
     }
     sc.close();

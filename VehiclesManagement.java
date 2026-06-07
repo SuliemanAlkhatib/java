@@ -20,13 +20,15 @@ public class VehiclesManagement {
                 System.out.println("Enter Has Side Seat (true/false): ");
                 boolean hasSideSeat = sc.nextBoolean();
                 vehicles.add(new Bike(plateNumber, company, model, dayleyCost, engineCapacity, hasSideSeat));
-                break;
+                System.out.println("Vehicle added successfully!");
+                return;
             case 2:
                 System.out.println("Enter Load Capacity: ");
                 double loadCapacity = sc.nextDouble();
                 System.out.println("Enter Has Cooling System (true/false): ");
                 boolean hasCoolingSystem = sc.nextBoolean();
                 vehicles.add(new Truck(plateNumber, company, model, dayleyCost, loadCapacity, hasCoolingSystem));
+                System.out.println("Vehicle added successfully!");
                 break;
             case 3:
                 System.out.println("Enter Gas Type: 1 Gasoline, 2 Diesel, 3 Electric: ");
@@ -48,8 +50,10 @@ public class VehiclesManagement {
                 System.out.println("Enter Number Of Seats: ");
                 int numberOfSeats = sc.nextInt();
                 vehicles.add(new Car(plateNumber, company, model, dayleyCost, gasType, numberOfSeats));
+                System.out.println("Vehicle added successfully!");
                 break;
             default:
+                System.out.println("Invalid vehicle type!");
                 break;
         }
         }
@@ -57,9 +61,12 @@ public class VehiclesManagement {
               for(Vehicle v : vehicles){
                   if(v.plateNumber == plateNumber){
                       vehicles.remove(v);
-                      break;
+                      System.out.println("Vehicle removed successfully!");
+                      return;
                   }
+
               }
+                System.out.println("Vehicle Not Found");
           }
           public static void SearchVehicle(ArrayList<Vehicle> vehicles, int plateNumber){
               for(Vehicle v : vehicles){
@@ -71,22 +78,37 @@ public class VehiclesManagement {
               System.out.println("Vehicle Not Found");
           }
           public static void DisplayAllVehicles(ArrayList<Vehicle> vehicles){
+            if(vehicles.isEmpty()){
+                System.out.println("No vehicles found!");
+                return;
+            }
               for(Vehicle v : vehicles){
                   v.displayInfo();
               }
           }
           public static void DisplayAvailableVehicles(ArrayList<Vehicle> vehicles){
+            int count = 0;
               for(Vehicle v : vehicles){
                   if(v.isAvailable){
                       v.displayInfo();
+                      count++;
                   }
+              }
+              if(count == 0){
+                  System.out.println("No available vehicles found!");
               }
           }
           public static void DisplayUnAvailableVehicles(ArrayList<Vehicle> vehicles){
+            int count = 0;
               for(Vehicle v : vehicles){
                   if(!v.isAvailable){
                       v.displayInfo();
+                        count++;
+
                   }
+              }
+              if(count == 0){
+                  System.out.println("No unavailable vehicles found!");
               }
           }
 
