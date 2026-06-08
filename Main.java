@@ -39,7 +39,7 @@ public class Main {
                 ContractsManagement.addContract(contracts, clients, vehicles);
                 break;
             case 2:
-                ContractsManagement.searchContract(contracts);
+                ContractsManagement.searchContract(contracts, clients);
                 break;
             case 3:
                 ContractsManagement.DisplayAllContracts(contracts);
@@ -69,7 +69,9 @@ public class Main {
                 VehiclesManagement.AddVehicle(vehicles);
                 break;
             case 2:
-                ContractsManagement.searchContract(contracts);
+                 System.out.println("Enter Vehicle Plate Number: ");
+                int searchId = sc.nextInt();
+                VehiclesManagement.SearchVehicle(vehicles, searchId);
                 break;
             case 3:
                 VehiclesManagement.DisplayAllVehicles(vehicles);
