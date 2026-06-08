@@ -39,9 +39,6 @@ public class Contract {
         }
         public double calculateFine(){
             totalCost=0;
-            if(client instanceof Person p){
-                p.isVip();
-            }
          lateness();
          client.isVip();
          totalCost+= durationInDays * Vehicle.dayleyCost;
