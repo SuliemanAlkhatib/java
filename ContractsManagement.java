@@ -132,12 +132,12 @@ public static void searchContract(ArrayList<Contract> contracts,ArrayList <Clien
     }
 
 }
-public static void DisplayAllContracts(ArrayList<Contract> contracts){
+public static void DisplayAllContracts(ArrayList<Contract> contracts,ArrayList <Vehicle> vehicles){
     int choice;
     Scanner scc = new Scanner(System.in);
        while(true){
         
-       System.out.println("\nEnter \n1 to display all contracts, \n2 to display only active contracts, \n3 to display only closed contracts ,\n4 to display late contracts, \n5 to display contracts within a specific interval\n0 to exit: ");
+       System.out.println("\nEnter \n1 to display all contracts, \n2 to display only active contracts, \n3 to display only closed contracts ,\n4 to display late contracts, \n5 to display contracts within a specific interval,\n6 to display client who rented a specific vehicle\n0 to exit: ");
 
       choice  = scc.nextInt();
 
@@ -226,6 +226,20 @@ public static void DisplayAllContracts(ArrayList<Contract> contracts){
             Scanner sc = new Scanner(System.in);
              System.out.println("Enter the Vehicle Plate Number: ");
               int plateNumber = sc.nextInt();
+              boolean exist=false;
+              for(Vehicle v:vehicles)
+              {
+                if(v.plateNumber==plateNumber)
+                {
+                    exist=true;
+                    break;
+                }
+              }
+              if(!exist){
+                System.out.println("Vehicle has not found");
+                         return;
+              }
+              else{
                i=0;
                 for(Contract c : contracts){
                      if(c.Vehicle.plateNumber == plateNumber){
@@ -238,7 +252,7 @@ public static void DisplayAllContracts(ArrayList<Contract> contracts){
                     System.out.println("No contracts found for the specified vehicle!");
                 }
            
-          sc.close();}
+          sc.close();}}
             break;
                 default: System.out.println("Invalid Choice");
 }}
