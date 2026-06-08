@@ -43,6 +43,7 @@ public class Contract {
                 p.isVip();
             }
          lateness();
+         client.isVip();
          totalCost+= durationInDays * Vehicle.dayleyCost;
          totalCost+= totalCost * Vehicle.rate;
          totalCost-= totalCost * client.rate;

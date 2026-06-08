@@ -104,16 +104,19 @@ public static void mostRentedVehicles(ArrayList<Vehicle> vehicles){
 public static void VipClients(ArrayList<Client> clients){
 
     int i=0;
+    int count=0;
     System.out.println("VIP Clients:");
     for(Client c : clients){
-        ((Person) c).isVip();
-        if(c instanceof Person p && p.vip){
+        c.isVip();
+        if(c.vip){
             i++;
             System.out.println("The Client #"+i+":");
             c.displayInfo();
+            count++;
         }
     }
-
+    if(count==0){
+        System.out.println("No VIP clients found!");
+    }
 }
-
 }
