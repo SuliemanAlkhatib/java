@@ -38,7 +38,7 @@ public class ContractsManagement {
             System.out.println("Vehicle is not available!");
 
             return;
-        }
+        }   
        /*System.out.println("Enter Start Date (YYYY-MM-DD): ");
         String startDateStr = sc.next();
         LocalDate startDate = LocalDate.parse(startDateStr); */ 
