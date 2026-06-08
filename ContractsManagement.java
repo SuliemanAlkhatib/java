@@ -39,9 +39,9 @@ public class ContractsManagement {
 
             return;
         }
-        System.out.println("Enter Start Date (YYYY-MM-DD): ");
+       /*System.out.println("Enter Start Date (YYYY-MM-DD): ");
         String startDateStr = sc.next();
-        LocalDate startDate = LocalDate.parse(startDateStr);
+        LocalDate startDate = LocalDate.parse(startDateStr); */ 
         System.out.println("Enter Duration In Days: ");
         int durationInDays = sc.nextInt();
         vehicle.rentCount++;
@@ -67,7 +67,7 @@ public class ContractsManagement {
     }
     System.out.println("Contract not found or already closed!");
 }
-public static void searchContract(ArrayList<Contract> contracts){
+public static void searchContract(ArrayList<Contract> contracts,ArrayList <Client>clients){
     Scanner sc = new Scanner(System.in);
     System.out.println("To search by Person name enter 1\nto search by Corporate client name Enter 2: ");
     int choice = sc.nextInt();
@@ -75,28 +75,57 @@ public static void searchContract(ArrayList<Contract> contracts){
         case 1:
             System.out.println("Enter Client name: ");
             String clientName = sc.next();
+           boolean found = false;
+            for(Client c : clients){
+                if(c.name.equals(clientName)){
+                    found = true;
+                    break;
+                }
+            }
+            if(!found){
+                System.out.println("Client not found!");
+                return;
+            }
+            else{
+                int count=0;
             for(Contract c : contracts){
                 if(c.client.name.equals(clientName)){
                     c.displayInfo();
-
-                    return;
+                    count++;
                 }
             }
-           
-            System.out.println("Contract not found!");
-            break;
+            if(count==0){
+                System.out.println("this client has no contracts");
+                return;
+            }
+        }
         case 2:
             System.out.println("Enter Corporate client name: ");
             String corporateName = sc.next();
+             boolean exist = false;
+            for(Client c : clients){
+                if(c.name.equals(corporateName)){
+                    exist = true;
+                    break;
+                }
+            }
+            if(!exist){
+                System.out.println("Corporate not found");
+                return;
+            }
+            else{
+                    int count=0;
             for(Contract c : contracts){
                 if(c.client instanceof Corporate && ((Corporate) c.client).name.equals(corporateName)){
                     c.displayInfo();
-
-                    return;
+                    count++;
                 }
             }
-            System.out.println("Contract not found!");
-            break;
+            if(count==0){
+                System.out.println("this corporate has no contracts");
+                return;
+            }
+        }
        default: 
        System.out.println("Invalid Choice");
           
