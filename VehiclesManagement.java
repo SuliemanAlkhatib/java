@@ -5,6 +5,10 @@ public class VehiclesManagement {
           Scanner sc = new Scanner(System.in);
           System.out.println("Enter the type of vehicle (1 for Bike, 2 for Truck,3 for Car): ");
           int type = sc.nextInt();
+          if(type ==0){
+              System.out.println("Invalid vehicle type!");
+              return;
+           }
           System.out.println("Enter Plate Number: ");
           int plateNumber =sc.nextInt();
           System.out.println("Enter Company: ");
@@ -46,6 +50,7 @@ public class VehiclesManagement {
                         break;
                     default:
                         gasType = "Error gas type";
+                        break;
                 }
                 System.out.println("Enter Number Of Seats: ");
                 int numberOfSeats = sc.nextInt();
@@ -53,7 +58,7 @@ public class VehiclesManagement {
                 System.out.println("Vehicle added successfully!");
                 break;
             default:
-                System.out.println("Invalid vehicle type!");
+                System.out.println("  ");
                 break;
         }
         }

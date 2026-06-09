@@ -98,6 +98,7 @@ public static void searchContract(ArrayList<Contract> contracts,ArrayList <Clien
                 System.out.println("this client has no contracts");
                 return;
             }
+            return;
         }
         case 2:
             System.out.println("Enter Corporate client name: ");
@@ -125,10 +126,10 @@ public static void searchContract(ArrayList<Contract> contracts,ArrayList <Clien
                 System.out.println("this corporate has no contracts");
                 return;
             }
+            return;
         }
        default: 
-       System.out.println("Invalid Choice");
-          
+       System.out.println("Invalid Choice");     
     }
 
 }
@@ -252,7 +253,7 @@ public static void DisplayAllContracts(ArrayList<Contract> contracts,ArrayList <
                     System.out.println("No contracts found for the specified vehicle!");
                 }
            
-          sc.close();}}
+            }}
             break;
                 default: System.out.println("Invalid Choice");
 }}

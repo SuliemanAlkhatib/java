@@ -8,7 +8,7 @@ public class Bike extends Vehicle {
         if(hasSideSeat){
             this.rate = 0.02;
     }
-    if(engineCapacity>500){
+    if(engineCapacity>500 && !hasSideSeat){
         this.rate = 0.04;
     }
 }

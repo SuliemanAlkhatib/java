@@ -16,6 +16,7 @@ public class Person  extends Client {
         super.displayInfo();
         System.out.println("Driving License Number: "+drivingLicenseNumber);
         System.out.println("Date of Birth: "+dateOfBirth.getDayOfMonth()+"/"+dateOfBirth.getMonthValue()+"/"+dateOfBirth.getYear());
+        System.out.println("Rate: "+rate);
         System.out.println("=======================================================");
     }
     
