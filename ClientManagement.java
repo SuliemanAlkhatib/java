@@ -64,8 +64,8 @@ public class ClientManagement {
                 c.Address = address;
                 if(c instanceof Person){
                     System.out.println(" drivingLicenseNumber: ");
-                    String Id = sc.next();
-                    ((Person) c).drivingLicenseNumber = Id;
+                    String drivingLicenseNumber = sc.next();
+                    ((Person) c).drivingLicenseNumber = drivingLicenseNumber;
                 }
                 else if(c instanceof Corporate){
                     System.out.println("Enter New Tax Number: ");
