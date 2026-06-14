@@ -78,7 +78,7 @@ class ReportsManagement {
         double dateRangeRevenue = 0.0;
         int i=0;
         for(Contract c:contracts){
-            if(!c.startDate.isAfter(LocalDate.parse(startDate)) && !c.startDate.isBefore(LocalDate.parse(endDate)) && c.isClosed){
+            if(c.startDate.isAfter(LocalDate.parse(startDate)) && c.startDate.isBefore(LocalDate.parse(endDate)) && c.isClosed){
                 i++;
                 dateRangeRevenue += c.calculateFine();
             }
