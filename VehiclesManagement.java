@@ -31,6 +31,7 @@ public class VehiclesManagement {
                 double loadCapacity = sc.nextDouble();
                 System.out.println("Enter Has Cooling System (true/false): ");
                 boolean hasCoolingSystem = sc.nextBoolean();
+                 
                 vehicles.add(new Truck(plateNumber, company, model, dayleyCost, loadCapacity, hasCoolingSystem));
                 System.out.println("Vehicle added successfully!");
                 break;

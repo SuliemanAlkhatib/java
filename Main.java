@@ -1,7 +1,35 @@
+import java.awt.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.border.EmptyBorder;
 public class Main {
+    public static JPanel VehiclesPanel(CardLayout card,JPanel container){
+        JPanel Vehicles = new JPanel(new GridLayout(5,1,0,10));
+        Vehicles.setBorder(new EmptyBorder(20,250,20,250));
+        JButton addVehicles =new JButton("Add Vehicles");
+        JButton removeVehicle =new JButton("Remove Vehicles");
+        JButton DisplayA =new JButton("Display Available Vehicles");
+        JButton DisplayU =new JButton("Display UnAvailable\n Vehicles");
+        JButton ExitmVehicles =new JButton("Exit Vehicles");
+
+        Vehicles.add(addVehicles);
+        Vehicles.add(removeVehicle);
+        Vehicles.add(DisplayA);
+        Vehicles.add(DisplayU);
+        Vehicles.add(ExitmVehicles);
+        
+        ExitmVehicles.addActionListener(e->card.show(container, "MainMenuCard"));
+        return Vehicles;
+
+    }
     public static void reports(ArrayList<Contract> contracts, ArrayList<Vehicle> vehicles, ArrayList<Client> clients){
         int choice;
         Scanner sc = new Scanner(System.in);
@@ -125,7 +153,7 @@ public class Main {
     }while(true);
     
     }
-    public static void main(String[] args) {
+   /*  public static void main(String[] args) {
         
 
         Scanner sc = new Scanner(System.in);
@@ -161,5 +189,55 @@ public class Main {
         }
     }while(true);
 
+    }*/
+
+    public static void main(String[] args) {
+        // Run the GUI creation code on the Event Dispatch Thread (EDT)
+        JFrame jframe = new JFrame("Vehicle Renting System");
+        jframe.setSize(800,600);
+        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        CardLayout card = new CardLayout();
+        JPanel mainContainer = new JPanel(card);
+        
+        JPanel mainMenu = new JPanel(new GridLayout(4,1,0,30));
+        
+        mainMenu.setBorder(new EmptyBorder(20,300,20,300));
+        JButton mVehicles =new JButton("Manage Vehicles");
+        JButton mClients =new JButton("Manage Clients");
+        JButton mContracts =new JButton("Manage Contracts");
+        JButton exit =new JButton("Exit");
+        mainMenu.add(mVehicles);
+        mainMenu.add(mClients);
+        mainMenu.add(mContracts);
+        mainMenu.add(exit);
+        
+        
+        /*JPanel Vehicles = new JPanel(new GridLayout(5,1,0,30));
+        
+        
+        Vehicles.setBorder(new EmptyBorder(20,300,20,300));
+        //1 to add vehicle, \n2 to search vehicle,\n3 to show vehicle,\n4 to remove vehicle,\n5 to Display Available Vehicles,\n6 to Display Unavailable Vehicles,\n0 to go back:
+JButton addVehicles =new JButton("Add Vehicles");
+JButton removeVehicle =new JButton("Remove Vehicles");
+JButton DisplayA =new JButton("Display Available Vehicles");
+JButton DisplayU =new JButton("Display UnAvailable Vehicles");
+JButton ExitmVehicles =new JButton("Exit Vehicles");
+
+        Vehicles.add(addVehicles);
+        Vehicles.add(removeVehicle);
+        Vehicles.add(DisplayA);
+        Vehicles.add(DisplayU);
+        Vehicles.add(ExitmVehicles);
+*/      JPanel Vehicles = VehiclesPanel(card, mainContainer);
+        mainContainer.add(mainMenu,"MainMenuCard");
+        mainContainer.add(Vehicles,"VehiclesCard");
+
+        mVehicles.addActionListener(e-> card.show(mainContainer,"VehiclesCard"));
+        //ExitmVehicles.addActionListener(e->card.show(mainContainer, "MainMenuCard"));
+        exit.addActionListener(e->System.exit(0));
+
+        jframe.add(mainContainer);
+        jframe.setVisible(true);
     }
 }

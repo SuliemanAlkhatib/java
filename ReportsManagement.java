@@ -1,7 +1,7 @@
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.time.LocalDate;
 class ReportsManagement {
     public static void revenueReport(ArrayList<Contract> contracts){
         System.out.println("Enter\n1 to show total revenue. \n2 to show revenue by vehicle. \n3 to show revenue by client. \n4 to show revenue by month. \n5 to show revenue by date range. \n0 to go back");
@@ -70,7 +70,11 @@ class ReportsManagement {
         }
         else{
             System.out.println("Revenue for "+month+"/"+year+": "+monthRevenue);
-        }}case 5:{
+        }
+    
+    }
+    case 5:{
+
         System.out.println("Enter Start Interval Date (YYYY-MM-DD): ");
         String startDate = sc.next();
         System.out.println("Enter End Interval Date (YYYY-MM-DD): ");
@@ -78,7 +82,7 @@ class ReportsManagement {
         double dateRangeRevenue = 0.0;
         int i=0;
         for(Contract c:contracts){
-            if(!c.startDate.isAfter(LocalDate.parse(startDate)) && !c.startDate.isBefore(LocalDate.parse(endDate)) && c.isClosed){
+            if(c.startDate.isAfter(LocalDate.parse(startDate)) && c.startDate.isBefore(LocalDate.parse(endDate)) && c.isClosed){
                 i++;
                 dateRangeRevenue += c.calculateFine();
             }

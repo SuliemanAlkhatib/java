@@ -9,7 +9,7 @@ public class ContractsManagement {
         String clientname = sc.next();
         Client client = null;
         for(Client c : clients){
-            if(c.name == null ? clientname == null : c.name.equals(clientname)){
+            if(c.name.equals(clientname)){
                 client = c;
                 break;
             }
@@ -137,7 +137,6 @@ public static void DisplayAllContracts(ArrayList<Contract> contracts,ArrayList <
     int choice;
     Scanner scc = new Scanner(System.in);
        while(true){
-        
        System.out.println("\nEnter \n1 to display all contracts, \n2 to display only active contracts, \n3 to display only closed contracts ,\n4 to display late contracts, \n5 to display contracts within a specific interval,\n6 to display client who rented a specific vehicle\n0 to exit: ");
 
       choice  = scc.nextInt();
@@ -168,6 +167,7 @@ public static void DisplayAllContracts(ArrayList<Contract> contracts,ArrayList <
               case 3:  i=0;
               for(Contract c : contracts){
                   if(c.isClosed){
+                
                       i++;
                       c.displayInfo();
                   }

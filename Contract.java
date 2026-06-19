@@ -8,8 +8,8 @@ public class Contract {
     public int lateDays;
     public double totalCost=0;
     public boolean isClosed=false;
-        Contract(Client Client_name, Vehicle Vehicle, LocalDate startDate, int durationInDays) {
-            this.client = Client_name;
+        Contract(Client Client, Vehicle Vehicle, LocalDate startDate, int durationInDays) {
+            this.client = Client;
             this.Vehicle = Vehicle;
             this.startDate = startDate;
             this.durationInDays = durationInDays;
@@ -35,6 +35,9 @@ public class Contract {
              long daysBetween = ChronoUnit.DAYS.between(startDate, LocalDate.now());
              lateDays = (int) daysBetween - durationInDays;
              lateDays = Math.max(lateDays,0);
+
+
+
 
         }
         public double calculateFine(){
