@@ -13,10 +13,13 @@ public class Car extends Vehicle {
         }
     }
     @Override
-    public void displayInfo() {
+    public String displayInfo() {
         super.displayInfo();
-        System.out.println("Gas Type: " + gasType + "\nNumber Of Seats: " + numberOfSeats );
-        System.out.println("=======================================================");  
+        Info+="Gas Type: " + gasType + "\nNumber Of Seats: " + numberOfSeats ;
+        Info+="\n=======================================================";  
+        return Info;
     }
-
+    public String toString(){
+        return "company name: "+company +"\nrate: "+rate+"\n car model "+ model +"\n plate number "+plateNumber+"\n dayley Cost "+dayleyCost+"\n isAvailable "+((isAvailable)?"Yes":"NO"+" Gas Type: " + gasType + "\nNumber Of Seats: " + numberOfSeats+"\n==================================\n");
+     }
 }

@@ -11,10 +11,11 @@ public class Truck extends Vehicle {
 }
 
     @Override
-    public void displayInfo() {
+    public String displayInfo() {
         super.displayInfo();
-        System.out.println("Load Capacity: " + loadCapacity + "\nHas Cooling System: " + ((hasCoolingSystem) ? "Yes" : "No"));
-        System.out.println("=======================================================");  
+        Info+="Load Capacity: " + loadCapacity + "\nHas Cooling System: " + ((hasCoolingSystem) ? "Yes" : "No");
+        Info+="\n=======================================================";  
+        return Info;
     }
     
 }

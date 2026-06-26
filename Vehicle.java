@@ -4,6 +4,7 @@ abstract public class Vehicle {
     protected String company;
     protected double rate;
     protected String model;
+    protected String Info="";
     protected double dayleyCost;
     protected boolean isAvailable;
     public Vehicle(int plateNumber, String company, String model, double dayleyCost) {
@@ -14,8 +15,11 @@ abstract public class Vehicle {
         this.isAvailable = true;
     }
 
-     public void displayInfo(){
-        System.out.println("=======================================================");  
-        System.out.println("company name: "+company +"\nrate: "+rate+"\n car model "+ model +"\n plate number "+plateNumber+"\n dayley Cost "+dayleyCost+"\n isAvailable "+((isAvailable)?"Yes":"NO"));
+     public String displayInfo(){
+        Info+="=======================================================\n";  
+        Info+="company name: "+company +"\nrate: "+rate+"\n car model: "+ model +"\n plate number: "+plateNumber+"\n dayley Cost: "+dayleyCost+"\n isAvailable: "+((isAvailable)?"Yes":"NO");
+        return Info;
      }
+     
+
 }

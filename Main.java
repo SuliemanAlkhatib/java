@@ -2,6 +2,8 @@ import java.awt.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,7 +19,7 @@ public class Main {
         JButton addVehicles =new JButton("Add Vehicles");
         JButton removeVehicle =new JButton("Remove Vehicles");
         JButton DisplayA =new JButton("Display Available Vehicles");
-        JButton DisplayU =new JButton("Display UnAvailable\n Vehicles");
+        JButton DisplayU =new JButton("<html>Display UnAvailable<br> Vehicles</html>");
         JButton ExitmVehicles =new JButton("Exit Vehicles");
 
         Vehicles.add(addVehicles);
@@ -25,11 +27,37 @@ public class Main {
         Vehicles.add(DisplayA);
         Vehicles.add(DisplayU);
         Vehicles.add(ExitmVehicles);
-        
+        DisplayA.addActionListener(e->card.show(container, "ShowCard"));
         ExitmVehicles.addActionListener(e->card.show(container, "MainMenuCard"));
         return Vehicles;
 
     }
+    public static JPanel showVehicles(CardLayout card,JPanel container){
+        ArrayList<Vehicle> vehicles = new ArrayList<>(); 
+
+        vehicles.add(new Car(1234,"Toyota","Corolla",100,"Gasoline",5));
+       vehicles.add(new Car(122334,"BMW","X5",200,"Diesel",5));
+
+
+        JPanel Vehicles = new JPanel();
+        Vehicles.setLayout(new BoxLayout(Vehicles, BoxLayout.Y_AXIS));
+        Vehicles.setBorder(new EmptyBorder(20,250,20,250));
+
+        JLabel header = new JLabel("-----Inventory Cars-----");
+        header.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Vehicles.add(header);
+        for(Vehicle v:vehicles){
+            String htmlText = "<html>" + v.toString().replace("\n", "<br>") + "</html>";
+            JLabel item = new JLabel(htmlText);
+            item.setAlignmentX(Component.CENTER_ALIGNMENT);
+            Vehicles.add(item);
+            JLabel footer = new JLabel("--------------------");
+        footer.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Vehicles.add(footer);
+        }
+        return Vehicles;
+    }
+
     public static void reports(ArrayList<Contract> contracts, ArrayList<Vehicle> vehicles, ArrayList<Client> clients){
         int choice;
         Scanner sc = new Scanner(System.in);
@@ -230,7 +258,9 @@ JButton ExitmVehicles =new JButton("Exit Vehicles");
         Vehicles.add(DisplayU);
         Vehicles.add(ExitmVehicles);
 */      JPanel Vehicles = VehiclesPanel(card, mainContainer);
+JPanel show = showVehicles(card, mainContainer);
         mainContainer.add(mainMenu,"MainMenuCard");
+        mainContainer.add(show,"ShowCard");
         mainContainer.add(Vehicles,"VehiclesCard");
 
         mVehicles.addActionListener(e-> card.show(mainContainer,"VehiclesCard"));

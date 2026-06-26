@@ -13,10 +13,11 @@ public class Bike extends Vehicle {
     }
 }
     @Override
-    public void displayInfo() {
+    public String displayInfo() {
         super.displayInfo();
-        System.out.println(" Engine Capacity: " + engineCapacity + "\nHas Side Seat: " + ((hasSideSeat) ? "Yes" : "No"));
-        System.out.println("=======================================================");  
+        Info+=" Engine Capacity: " + engineCapacity + "\nHas Side Seat: " + ((hasSideSeat) ? "Yes" : "No");
+        Info+="\n=======================================================";  
+        return Info;
     
     }
 }
