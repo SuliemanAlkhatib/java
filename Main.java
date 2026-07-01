@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import javax.swing.JOptionPane;
 public class Main {
     public static JPanel VehiclesPanel(CardLayout card,JPanel container){
         JPanel Vehicles = new JPanel(new GridLayout(5,1,0,10));
@@ -28,13 +30,59 @@ public class Main {
         Vehicles.add(DisplayU);
         Vehicles.add(ExitmVehicles);
         DisplayA.addActionListener(e->card.show(container, "ShowCard"));
+        addVehicles.addActionListener(e->card.show(container, "AddVehiclesCard"));
+        removeVehicle.addActionListener(e->card.show(container, "RemoveVehiclesCard"));
+        DisplayU.addActionListener(e->card.show(container, "DisplayUnAvailableCard"));
         ExitmVehicles.addActionListener(e->card.show(container, "MainMenuCard"));
         return Vehicles;
 
     }
+    public static JPanel addVehiclesPanel(CardLayout card,JPanel container,ArrayList<Vehicle> vehicles){
+        JPanel addVehicles = new JPanel(new GridLayout(2,1,0,10));
+        addVehicles.setBorder(new EmptyBorder(20,250,20,250));
+        JButton addVehicle =new JButton("Start Adding Vehicle");
+        JButton ExitmVehicles =new JButton("Exit Vehicles");
+
+        addVehicles.add(addVehicle);
+        addVehicles.add(ExitmVehicles);
+        addVehicle.addActionListener(e->card.show(container, "AddVehiclesFormCard"));
+        ExitmVehicles.addActionListener(e->card.show(container, "MainMenuCard"));
+        return addVehicles;
+
+    }
+    public static JPanel removeVehiclesPanel(CardLayout card,JPanel container,ArrayList<Vehicle> vehicles){
+        JPanel removeVehicles = new JPanel(new GridLayout(2,1,0,10));
+        removeVehicles.setBorder(new EmptyBorder(20,250,20,250));
+        JButton removeVehicle =new JButton("Start Removing Vehicle");
+        JButton ExitmVehicles =new JButton("Exit Vehicles");
+
+        removeVehicles.add(removeVehicle);
+        removeVehicles.add(ExitmVehicles);
+        removeVehicle.addActionListener(e->{
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter Vehicle Plate Number: ");
+            int plateNumber = sc.nextInt();
+            VehiclesManagement.RemoveVehicle(vehicles, plateNumber);
+        });
+        ExitmVehicles.addActionListener(e->card.show(container, "MainMenuCard"));
+        return removeVehicles;
+
+    }
+    public static JPanel DisplayUnAvailableVehiclesPanel(CardLayout card,JPanel container,ArrayList<Vehicle> vehicles){
+        JPanel DisplayUnAvailableVehicles = new JPanel(new GridLayout(2,1,0,10));
+        DisplayUnAvailableVehicles.setBorder(new EmptyBorder(20,250,20,250));
+        JButton DisplayUnAvailableVehicle =new JButton("Start Displaying UnAvailable Vehicle");
+        JButton ExitmVehicles =new JButton("Exit Vehicles");
+
+        DisplayUnAvailableVehicles.add(DisplayUnAvailableVehicle);
+        DisplayUnAvailableVehicles.add(ExitmVehicles);
+        DisplayUnAvailableVehicle.addActionListener(e->VehiclesManagement.DisplayUnAvailableVehicles(vehicles));
+        ExitmVehicles.addActionListener(e->card.show(container, "MainMenuCard"));
+        return DisplayUnAvailableVehicles;
+
+    }
     public static JPanel showVehicles(CardLayout card,JPanel container){
         ArrayList<Vehicle> vehicles = new ArrayList<>(); 
-
         vehicles.add(new Car(1234,"Toyota","Corolla",100,"Gasoline",5));
        vehicles.add(new Car(122334,"BMW","X5",200,"Diesel",5));
 
@@ -57,6 +105,52 @@ public class Main {
         }
         return Vehicles;
     }
+    public static JPanel addVehiclesFormPanel(CardLayout card,JPanel container,ArrayList<Vehicle> vehicles){
+        JTextField plateNumberField = new JTextField();
+        JTextField companyField = new JTextField();
+        JTextField modelField = new JTextField();
+        JTextField dayleyCostField = new JTextField();
+        JTextField gasTypeField = new JTextField();
+        JTextField numberOfSeatsField = new JTextField();
+        JPanel p = new JPanel(new GridLayout(8,2,10,10));
+        p.setBorder(new EmptyBorder(20,250,20,250));
+        JButton save=new JButton("Save Vehicle");
+        JButton back =new JButton("Back");
+        p.add(new JLabel("Plate Number:"));
+        p.add(plateNumberField);
+        p.add(new JLabel("Company:"));
+        p.add(companyField);
+        p.add(new JLabel("Model:"));
+        p.add(modelField);
+        p.add(new JLabel("Daily Cost:"));
+        p.add(dayleyCostField);
+        p.add(new JLabel("Gas Type:"));
+        p.add(gasTypeField);
+        p.add(new JLabel("Number of Seats:"));
+        p.add(numberOfSeatsField);
+        p.add(save);
+        p.add(back);
+        save.addActionListener(e->{
+           
+                int plateNumber = Integer.parseInt(plateNumberField.getText());
+                String company = companyField.getText();
+                String model = modelField.getText();
+                double dayleyCost = Double.parseDouble(dayleyCostField.getText());
+                String gasType = gasTypeField.getText();
+                int numberOfSeats = Integer.parseInt(numberOfSeatsField.getText());
+                vehicles.add(new Car(plateNumber, company, model, dayleyCost, gasType, numberOfSeats));
+                JOptionPane.showMessageDialog(p, "Vehicle added successfully!");
+            
+        plateNumberField.setText("");
+        companyField.setText("");
+        modelField.setText("");
+        dayleyCostField.setText("");
+        gasTypeField.setText("");
+        numberOfSeatsField.setText("");
+    });
+        return p;
+    }
+    
 
     public static void reports(ArrayList<Contract> contracts, ArrayList<Vehicle> vehicles, ArrayList<Client> clients){
         int choice;
@@ -262,6 +356,10 @@ JPanel show = showVehicles(card, mainContainer);
         mainContainer.add(mainMenu,"MainMenuCard");
         mainContainer.add(show,"ShowCard");
         mainContainer.add(Vehicles,"VehiclesCard");
+        mainContainer.add(removeVehiclesPanel(card, mainContainer,new ArrayList<Vehicle>()),"RemoveVehiclesCard");
+        mainContainer.add(DisplayUnAvailableVehiclesPanel(card, mainContainer,new ArrayList<Vehicle>()),"DisplayUnAvailableCard");
+        mainContainer.add(addVehiclesPanel(card, mainContainer,new ArrayList<Vehicle>()),"AddVehiclesCard");
+        mainContainer.add(addVehiclesFormPanel(card, mainContainer,new ArrayList<Vehicle>()),"AddVehiclesFormCard");
 
         mVehicles.addActionListener(e-> card.show(mainContainer,"VehiclesCard"));
         //ExitmVehicles.addActionListener(e->card.show(mainContainer, "MainMenuCard"));
